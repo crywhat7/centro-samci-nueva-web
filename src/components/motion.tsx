@@ -4,18 +4,10 @@ import Lenis from "lenis";
 
 export function SmoothScroll() {
   useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const lenis = new Lenis({ duration: 1.15, easing: (t) => 1 - Math.pow(1 - t, 4) });
-    let id = 0;
-    const raf = (t: number) => {
-      lenis.raf(t);
-      id = requestAnimationFrame(raf);
-    };
-    id = requestAnimationFrame(raf);
-    return () => {
-      cancelAnimationFrame(id);
-      lenis.destroy();
-    };
+    // Only on fine pointers (desktop): touch devices already have native momentum scrolling.
+    if (window.matchMedia("(prefers-reduced-motion: reduce), (pointer: coarse)").matches) return;
+    const lenis = new Lenis({ lerp: 0.14, wheelMultiplier: 1, autoRaf: true });
+    return () => lenis.destroy();
   }, []);
   return null;
 }

@@ -29,7 +29,7 @@ export function Header({ locale, nav }: { locale: Locale; nav: Dict["nav"] }) {
   ];
 
   return (
-    <header className={`fixed inset-x-0 top-0 z-50 transition-[background-color,border-color] duration-700 [transition-timing-function:var(--ease-expo)] ${scrolled || open ? "border-b border-line bg-paper/90 backdrop-blur-md" : "border-b border-transparent"}`}>
+    <header className={`fixed inset-x-0 top-0 z-50 transition-[background-color,border-color] duration-700 [transition-timing-function:var(--ease-expo)] ${scrolled || open ? "border-b border-line bg-paper" : "border-b border-transparent"}`}>
       <div className="mx-auto flex h-[72px] max-w-[1440px] items-center justify-between px-5 sm:px-8 lg:px-12">
         <Link href={href(locale, "/")} aria-label="Centro Samci — inicio" className="fade-in flex items-center gap-3">
           {/* eslint-disable-next-line @next/next/no-img-element */}

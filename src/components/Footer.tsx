@@ -3,6 +3,7 @@ import type { Locale } from "@/i18n/config";
 import { getDict, branches, social, categories } from "@/i18n/content";
 import { href } from "@/i18n/routes";
 import { Container } from "./ui";
+import { FireText } from "./FireText";
 
 export function Footer({ locale }: { locale: Locale }) {
   const d = getDict(locale);
@@ -47,7 +48,15 @@ export function Footer({ locale }: { locale: Locale }) {
             </div>
           </div>
         </div>
-        <p aria-hidden className="display select-none pt-10 text-center text-[clamp(4rem,21vw,22rem)] leading-[0.8] text-paper/[0.06]">{locale === "es" ? "Desde 1973" : "Since 1973"}</p>
+        <div className="pt-6">
+          <FireText
+            labels={
+              locale === "es"
+                ? { text: ["Desde", "1973"], hint: "Mantené presionado para apagar el fuego", hintTouch: "Tocá y arrastrá para apagar el fuego", done: "¡Fuego apagado!", doneSub: "Con el equipo correcto es así de fácil. Llevamos más de 50 años asegurándonos de eso.", again: "Volver a encender", cta: "Cotizar extintores", ctaHref: href(locale, "/contacto") }
+                : { text: ["Since", "1973"], hint: "Hold to put out the fire", hintTouch: "Tap and drag to put out the fire", done: "Fire's out!", doneSub: "With the right equipment it's this easy. We've made sure of that for 50+ years.", again: "Light it again", cta: "Get a quote", ctaHref: href(locale, "/contacto") }
+            }
+          />
+        </div>
         <div className="flex flex-col justify-between gap-2 py-8 text-[13px] text-paper/45 sm:flex-row">
           <span>© {new Date().getFullYear()} Centrosamci S. de R.L. de C.V. {d.footer.rights}</span>
           <span>Tegucigalpa · San Pedro Sula · Honduras</span>

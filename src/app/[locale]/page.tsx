@@ -48,7 +48,7 @@ export default async function Home({ params }: P) {
 
           {/* isotipo as a quiet, slow-turning seal — the brand's badge, not decoration */}
           <div aria-hidden className="pointer-events-none absolute -right-[12vw] top-[6%] w-[62vw] max-w-[820px] opacity-[0.09] sm:-right-[6vw] lg:right-[-9vw] lg:top-[3%] lg:w-[38vw] lg:opacity-100">
-            <Image src="/brand/isotipo.svg" alt="" width={820} height={820} priority className="fade-in h-auto w-full lg:[filter:drop-shadow(0_30px_60px_rgba(196,22,28,0.18))]" style={{ animationDelay: "500ms" }} />
+            <Image src="/brand/isotipo.svg" alt="" width={820} height={820} priority className="fade-in h-auto w-full" style={{ animationDelay: "500ms" }} />
           </div>
 
           <div className="relative z-10 mt-12 grid items-end gap-8 border-t border-line pt-8 lg:grid-cols-12">
@@ -174,9 +174,9 @@ export default async function Home({ params }: P) {
       {/* ───────── CLIENTS ───────── */}
       <section className="overflow-hidden py-20">
         <Container><Label>{d.home.clientsLabel}</Label></Container>
-        <div className="mt-10 flex w-max items-center gap-16 marquee">
+        <div className="mt-10 flex w-max items-center gap-16 marquee will-change-transform">
           {[...clientLogos, ...clientLogos].map((f, i) => (
-            <Image key={i} src={`/img/logos/${f}`} alt="" width={140} height={70} className="h-12 w-auto object-contain opacity-60 mix-blend-multiply grayscale transition duration-500 hover:opacity-100 hover:grayscale-0" />
+            <Image key={i} src={`/img/logos/${f}`} alt="" width={140} height={70} className="h-12 w-auto object-contain opacity-55 grayscale transition-opacity duration-500 hover:opacity-100" />
           ))}
         </div>
       </section>
